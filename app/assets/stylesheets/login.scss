@@ -1,0 +1,17 @@
+.submit {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  width: 100px;
+  height: 50px;
+  color: white;
+  background-color: #000;
+
+  &:active {
+    background-color: grey;
+  }
+}
+
+.login-form {
+  margin-top: 100px;
+}

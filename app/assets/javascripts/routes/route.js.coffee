@@ -1,0 +1,1 @@
+Ember.Route = Ember.Route.extend()

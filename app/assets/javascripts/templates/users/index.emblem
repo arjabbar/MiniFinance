@@ -1,0 +1,3 @@
+ul.small-block-grid-8.users-list
+  each
+    render 'user' this

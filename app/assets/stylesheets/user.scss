@@ -1,0 +1,18 @@
+.user {
+	min-height: 180px;
+	background-size: cover;
+	cursor: pointer;
+	-ms-filter: grayscale(80%);
+	-webkit-filter: grayscale(80%);
+	-webkit-transition: all .25s;
+	-moz-transition: all .25s;
+	-ms-transition: all .25s;
+	-o-transition: all .25s;
+	transition: all .25s;
+
+	&:hover {
+		outline-color: rgba(255,255,255,0.4);
+		-ms-filter: grayscale(0%);
+		-webkit-filter: grayscale(0%);
+	}
+}

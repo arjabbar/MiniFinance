@@ -1,0 +1,14 @@
+form.login-form submit=login
+  .row
+    .small-3.columns
+      label.right for="email" Email: 
+    .small-6.columns.left
+      = input value=email id="email" type="text" placeholder="Email@provider.com"
+  .row
+    .small-3.columns
+      label.right for="password" Password: 
+    .small-6.columns.left
+      = input value=password id="password" type="password" placeholder="Password"
+  .row  
+    .small-2.small-centered.columns
+      input.button type="submit" value="Login"

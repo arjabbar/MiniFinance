@@ -1,0 +1,14 @@
+nav.top-bar data-topbar=""
+  ul.title-area
+    li.name
+      h1
+        link-to 'home' classNames="logo"
+          .mini mini
+          .finance finance
+  section.top-bar-section
+    if loggedIn
+      ul.right: li
+        link-to currentUser.fullName 'users.show' currentUser
+    else
+      ul.right: li: link-to 'Login' 'login'
+    ul.right: li: link-to 'Users' 'users'

@@ -1,0 +1,6 @@
+ with model as user
+  .row
+    .small-6.columns.user-details
+      .user-name = user.fullName
+    .small-6.columns
+      img src=user.imageUrl

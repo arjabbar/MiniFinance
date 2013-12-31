@@ -36,6 +36,7 @@ GEM
     barber-emblem (0.1.1)
       barber (>= 0.4.1)
       emblem-source
+    bcrypt-ruby (3.1.2)
     builder (3.1.4)
     coderay (1.1.0)
     coffee-rails (4.0.1)
@@ -73,6 +74,7 @@ GEM
     emblem-source (0.3.5)
     erubis (2.7.0)
     execjs (2.0.2)
+    ffaker (1.22.1)
     foundation-rails (5.0.2.0)
       railties (>= 3.1.0)
       sass (>= 3.2.0)
@@ -153,12 +155,14 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers
+  bcrypt-ruby (~> 3.1.2)
   coffee-rails (~> 4.0.0)
   d3js-rails
   debugger
   ember-rails
   ember-source
   emblem-rails
+  ffaker
   foundation-rails
   jquery-rails
   pry-rails

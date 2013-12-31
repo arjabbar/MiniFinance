@@ -1,0 +1,3 @@
+.user-panel
+  with model as user
+    link-to "View" 'users.show' user  

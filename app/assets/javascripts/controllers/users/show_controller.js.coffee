@@ -1,0 +1,1 @@
+App.UsersShowController = Ember.Controller.extend()
