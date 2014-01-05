@@ -1,5 +1,17 @@
 @import 'globals';
 
 html, body {
-  background-color: $off-white;
+  background-color: white;
+}
+
+.center {
+  text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+.flush {
+  margin: 0 !important;
 }

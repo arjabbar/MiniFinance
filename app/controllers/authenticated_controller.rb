@@ -2,26 +2,22 @@ class AuthenticatedController < ApplicationController
 
   def login
     return head :unauthorized unless authenticate!
-    render json: {session: 
-      {
-      id: @current_user.id, 
-      first_name: @current_user.first_name,
-      last_name: @current_user.last_name,
-      profile_image: @current_user.image_url
-      }}, status: :ok
+    render json: @current_user.session, status: :ok
   end
 
   def authenticate!
-    return false unless verify_params && verify_credentials 
-    extend_user_session
-    set_new_token
-    save_changes
+    if verify_params && verify_credentials
+      extend_user_session
+      set_new_token
+      return save_changes
+    end
+    head :unauthorized
   end
 
   private
 
   def verify_params
-    @token = params[:token] || headers[MiniFinance::Application::Constants::API_TOKEN_HEADER_KEY]
+    @token = params[:token] || api_token
     @email = params[:email]
     @password = params[:password]
     @current_user = User.find_by(token: @token) || User.find_by(email: @email)
@@ -38,7 +34,7 @@ class AuthenticatedController < ApplicationController
   end
 
   def set_new_token
-    unless @authenticated_using_token
+    if @authenticated_using_password
       @token = generate_new_token
       @current_user.assign_attributes token: @token
     end
@@ -55,6 +51,10 @@ class AuthenticatedController < ApplicationController
 
   def set_token_in_header token
     response.headers[MiniFinance::Application::Constants::API_TOKEN_HEADER_KEY] = token
+  end
+
+  def api_token
+    env['HTTP_' + MiniFinance::Application::Constants::API_TOKEN_HEADER_KEY]
   end
 
   def save_changes

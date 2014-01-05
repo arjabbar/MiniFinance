@@ -3,7 +3,7 @@ form.login-form submit=login
     .small-3.columns
       label.right for="email" Email: 
     .small-6.columns.left
-      = input value=email id="email" type="text" placeholder="Email@provider.com"
+      = input value=email id="email" type="text" placeholder="email@provider.com"
   .row
     .small-3.columns
       label.right for="password" Password: 

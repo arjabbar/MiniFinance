@@ -1,5 +1,2 @@
-# For more information see: http://emberjs.com/guides/routing/
-
-App.LoginRoute = Ember.Route.extend({
-
-})
+App.LoginRoute = Ember.Route.extend
+  controller: -> @controllerFor('authenticator')

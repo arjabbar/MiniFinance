@@ -1,5 +1,5 @@
 class UsersController < AuthenticatedController
-  before_filter :authenticate!, except: [:index, :show, :create]
+  before_filter :authenticate!, except: [:index, :show, :create, :check_if_email_available]
 	respond_to :json
 
 	def index
@@ -13,10 +13,18 @@ class UsersController < AuthenticatedController
 	def create
 		user = User.new user_params
 		if (user.save)
-			render status: :ok, json: user
+			set_token_in_header user.token
+			render status: :ok, json: user.session
 		else
 			head :unprocessable_entity, json: user.errors
 		end
+	end
+
+	def check_if_email_available
+		if User.find_by_email params[:email]
+			return head :conflict
+		end
+		head :ok
 	end
 
 	def update
@@ -29,6 +37,6 @@ class UsersController < AuthenticatedController
 	end
 
 	def user_params
-		params.require(:user).permit :first_name, :last_name, :password, :password_confirmation, :email, :bio, :token
+		params.require(:user).permit :first_name, :middle_name, :last_name, :password, :password_confirmation, :email, :bio, :token
 	end
 end

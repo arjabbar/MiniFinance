@@ -1,0 +1,7 @@
+.finances.row
+  .small-5.columns.assets
+    each asset in assets
+      render 'finance' asset
+  .small-5.columns.expenses
+    each expense in expenses
+      render 'finance' expense

@@ -1,7 +1,9 @@
 MiniFinance::Application.routes.draw do
-
-  resources :users, only: [:index, :create, :show, :update, :destroy], defaults: {format: :json}
+  
+  resources :users, :billers, :finances, only: [:index, :create, :show, :update, :destroy], defaults: {format: :json}
+  get 'email_available', to: 'users#check_if_email_available'
   root 'home#index'
-  get "home/index"
   post "login", to: 'authenticated#login'
+  post "register", to: 'users#create'
+
 end

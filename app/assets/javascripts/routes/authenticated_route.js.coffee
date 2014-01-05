@@ -1,4 +1,5 @@
 App.AuthenticatedRoute = Ember.Route.extend
   beforeModel: (transition)->
-    loggedIn = @controllerFor('login').get('isLoggedIn')
-    if not loggedIn then @transitionTo 'login'
+    loggedIn = @controllerFor('application').get 'isLoggedIn'
+    if not loggedIn 
+      @transitionTo 'login'

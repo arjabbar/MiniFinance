@@ -1,0 +1,5 @@
+with model
+  if isAsset
+    .finance #{source} : #{dollars}
+  else
+    .finance #{biller.name} : #{dollars}

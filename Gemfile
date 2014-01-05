@@ -15,7 +15,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'foundation-rails'
-gem 'underscore'
+gem 'underscore-rails'
 gem 'd3js-rails'
 gem 'ember-rails'
 gem 'ember-source'
@@ -23,6 +23,8 @@ gem 'emblem-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'active_model_serializers'
+
+gem 'money-rails'
 
 group :doc do
 	# bundle exec rake doc:rails generates the API under doc/api.
@@ -43,6 +45,3 @@ gem 'bcrypt-ruby', '~> 3.1.2'
 
 # Use Capistrano for deployment
 # gem 'capistrano', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]

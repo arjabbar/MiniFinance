@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 
+  amount_in_cents: 1
+  reccuring: false
+  start_date: 2013-12-31 15:13:51
+  end_date: 2013-12-31 15:13:51
+  type: 
+
+two:
+  user_id: 
+  amount_in_cents: 1
+  reccuring: false
+  start_date: 2013-12-31 15:13:51
+  end_date: 2013-12-31 15:13:51
+  type: 

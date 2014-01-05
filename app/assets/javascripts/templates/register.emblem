@@ -1,0 +1,41 @@
+form.register-form submit=register
+  .row
+    .small-3.columns
+      label.right for="first-name" First Name: 
+    .small-6.columns.left
+      = input value=firstName id="first-name" type="text" placeholder="First Name"
+  .row
+    .small-3.columns
+      label.right for="middle-name" Middle Name: 
+    .small-6.columns.left
+      = input value=middleName id="middle-name" type="text" placeholder="Middle Name"
+  .row
+    .small-3.columns
+      label.right for="last-name" Last Name: 
+    .small-6.columns.left
+      = input value=lastName id="last-name" type="text" placeholder="Last Name"
+  .row
+    .small-3.columns
+      label.right for="email" Email: 
+    .small-6.columns.left
+      = input value=email id="email" type="email" placeholder="email@provider.com"
+      unless hasValidEmail
+        if email: small.error Your email isn't valid
+  .row
+    .small-3.columns
+      label.right for="password" Password: 
+    .small-6.columns.left
+      = input value=password id="password" type="password" placeholder="Password"
+      unless hasValidPassword
+        if password: small.error = passwordMessage
+  .row
+    .small-3.columns
+      label.right for="confirm-password" Confirm Password: 
+    .small-6.columns.left
+      = input value=passwordConfirmation id="confirm-password" type="password" placeholder="Password Confirmation"
+      unless hasValidPassword
+        if password: small.error = passwordMessage
+  .row  
+    .small-2.small-centered.columns
+      input.button type="submit" value="Register" disabled=formInvalid
+

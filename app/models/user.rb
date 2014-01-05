@@ -1,7 +1,11 @@
 class User < ActiveRecord::Base
 	has_secure_password
+	has_many :exchanges
+	has_many :expenses
+	has_many :assets
+	has_many :billers
 	validates :email, :first_name, :last_name, presence: true
-	validates :password, presence: :true, on: :create 
+	validates :password, presence: :true, on: :create
 	validates :password, length: {in: 6..24}, on: :create
 	validates :token, uniqueness: true
 	validates :email, uniqueness: true
@@ -30,8 +34,19 @@ class User < ActiveRecord::Base
 		self.session_expires_on = DateTime.now.utc + MiniFinance::Application::Constants::LOGIN_EXPIRATION_LENGTH
 	end
 
-	def authenticate_with_token supplied_token 
-		token.eql?(supplied_token) && !expired_session?
+	def authenticate_with_token supplied_token
+		return self if token.eql?(supplied_token) && !expired_session?
+		false
+	end
+
+	def session
+		{
+			session: {
+				id: id,
+				firstName: first_name,
+				lastName: last_name,
+				profileImage: image_url}
+		}
 	end
 
 	alias_method :expire_login, :end_session

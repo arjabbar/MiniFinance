@@ -1,4 +1,5 @@
 App.NavbarController = Ember.Controller.extend
-  needs: ['login', 'application']
-  currentUser: Ember.computed.alias 'controllers.application.currentUser'
-  loggedIn: Ember.computed.alias 'controllers.login.isLoggedIn'
+  needs: 'application'
+  isLoggedIn: Ember.computed.alias 'controllers.application.isLoggedIn'
+  session: Ember.computed.alias 'controllers.application.session' 
+  

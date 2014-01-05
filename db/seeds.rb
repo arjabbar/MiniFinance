@@ -9,7 +9,9 @@ module Seeds
 
 	module Settings
 		NUM_USERS = 50
-		
+		NUM_ASSETS = 25
+		NUM_BILLERS = 10
+		NUM_EXPENSES = 25
 		module RandomUserGenerator
 			URL = "http://api.randomuser.me/0.2/portraits/%s/%s.jpg"
 			POSSIBLE_SEXES = 'men', 'women'
@@ -23,6 +25,13 @@ module Seeds
 
 		include Settings
 
+		def self.generate_all_records
+			self.generate_users
+			self.generate_billers
+			self.generate_assets
+			self.generate_expenses
+		end
+
 		def self.generate_users
 			NUM_USERS.times do
 				User.create!(
@@ -32,8 +41,8 @@ module Seeds
 					password: 'keshia',
 					password_confirmation: 'keshia',
 					bio: Faker::Lorem::paragraphs(3).join('\n'),
-					image_url: random_image)
-			end
+				image_url: random_image)
+			end 
 			create_me
 		end
 
@@ -41,11 +50,46 @@ module Seeds
 			User.create(
 				first_name: 'Abdur',
 				last_name: 'Jabbar',
-				email: 'arjabbar409@yahoo.com',
-				password: 'abc123',
-				password_confirmation: 'abc123',
+				email: 'arjabbar@yahoo.com',
+				password: 'keshia',
+				password_confirmation: 'keshia',
 				image_url: "https://secure.gravatar.com/avatar/0065199acc846d3af52415becb0fcf12",
 				bio: "A cool developer...")
+		end
+
+		def self.generate_billers
+			NUM_BILLERS.times do
+				Biller.create!(
+					name: Faker::Company.name,
+					website: Faker::Internet.http_url,
+					phone: Faker::PhoneNumber.short_phone_number)
+			end
+		end
+
+		def self.generate_assets
+			@me = @me || User.last
+			NUM_ASSETS.times do
+				Asset.create!(
+					user: @me,
+					amount_in_cents: rand(10..2000),
+					recurring: [true, false].sample,
+					start_date: DateTime.now,
+					end_date: DateTime.now,
+					source: Faker::Company.name)
+			end
+		end
+
+		def self.generate_expenses
+			@me = @me || User.last
+			NUM_EXPENSES.times do
+				Expense.create!(
+					user: @me,
+					amount_in_cents: rand(10..2000),
+					recurring: [true,false].sample,
+					start_date: DateTime.now,
+					end_date: DateTime.now,
+					biller: Biller.random)
+			end
 		end
 
 		def self.random_image
@@ -58,4 +102,4 @@ module Seeds
 
 end
 
-Seeds::Seeder.generate_users
+Seeds::Seeder.generate_all_records

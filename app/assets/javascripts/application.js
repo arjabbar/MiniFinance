@@ -16,6 +16,9 @@
 //= require handlebars
 //= require ember
 //= require ember-data
+//= require underscore
+//= require helpers
+//= require snap.svg.js
 //= require_self
 //= require app
 //= require_tree .

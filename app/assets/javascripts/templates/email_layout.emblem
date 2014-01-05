@@ -1,0 +1,4 @@
+.small-3.columns
+  label.right for="email" Email:  
+.small-6.columns.left
+  = yield

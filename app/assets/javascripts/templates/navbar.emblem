@@ -6,9 +6,11 @@ nav.top-bar data-topbar=""
           .mini mini
           .finance finance
   section.top-bar-section
-    if loggedIn
+    if isLoggedIn
       ul.right: li
-        link-to currentUser.fullName 'users.show' currentUser
+        link-to session.firstName 'users.show' session.id
     else
-      ul.right: li: link-to 'Login' 'login'
-    ul.right: li: link-to 'Users' 'users'
+      ul.right
+        li: link-to 'Register' 'register'
+        li: link-to 'Login' 'login'
+    ul.right: li: link-to 'Finances' 'finances'
